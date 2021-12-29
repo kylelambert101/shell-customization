@@ -1,13 +1,13 @@
-# custom-functions
+# shell-customization
 
-A small repo for storing my favorite bash customizations including shell functions, aliases, and miscellaneous scripts.
+A small repo for storing my favorite shell customizations including shell functions, aliases, prompts, and themes.
 
 ## Installation
 
-### Functions
+### Bash Functions
 
 1. Clone the repo
-1. Load `source-me.bash` from your `~/.bashrc`:
+1. Load `bash-functions/source-me.bash` from your `~/.bashrc`:
 
 ```bash
 source <path-to-custom-functions-repo>/bash-functions/source-me.bash
