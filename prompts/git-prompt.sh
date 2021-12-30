@@ -1,7 +1,7 @@
 # To be placed in ~/.config/git/git-prompt.sh
 # Will be picked up by git bash /etc/profile.d/git-prompt.sh as a custom configuration
 
-PS1='\[\033]0;$TITLEPREFIX:$PWD\007\]' # set window title
+PS1='\[\033]0;$PWD\007\]' # set window title
 PS1="$PS1"'\n'                 # new line
 PS1="$PS1"'\[\033[34m\]'       # change to blue
 PS1="$PS1"'[`date +%F_%T`] '   # date
