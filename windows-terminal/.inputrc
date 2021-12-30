@@ -1,0 +1,11 @@
+# Copy this file to ~/.inputrc
+
+# Enable arrow key navigation of command history,
+# filtered by partially-typed command snippets
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+# Disable the bell (prevent screen flicker)
+set bell-style none

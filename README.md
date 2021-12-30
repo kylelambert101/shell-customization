@@ -23,3 +23,7 @@ To use the klam_custom zsh theme,
 
 1. Copy `oh-my-zsh/klam_custom.zsh-theme` into `~/.oh-my-zsh/custom/themes/`
 1. Specify `ZSH_THEME="klam_custom"` in `~/.zshrc`
+
+### Windows Terminal Configuration
+
+To apply config for Windows Terminal, copy `windows-terminal/.inputrc` into `~/.inputrc`, replacing or appending whatever's there.
