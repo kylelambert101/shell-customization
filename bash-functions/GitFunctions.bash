@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
 
-alias glo='git log --oneline -n 10'
-
 # Automatically set the upstream branch for the current local branch
 gitup() {
     # Assume we're using the standard "origin" name for remote
     local REMOTE="origin"
     local BRANCH=$(git branch --show-current)
+    local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
     if [[ $BRANCH == "" ]]
     then
         echo "No branch found. Aborting."
         return
     fi
-    if [[ $BRANCH == "master" ]]
+    if [[ $BRANCH == $HEADBRANCH ]]
     then
-        echo "On master branch. Aborting."
+        echo "On branch $HEADBRANCH. Aborting."
         return
     fi
     local CMD="git push --set-upstream $REMOTE $BRANCH"
@@ -52,7 +51,15 @@ showRecentGitBranches(){
     done | tac | tail -10
 }
 
-gitMergeMaster(){
+# Check out and pull HEAD branch
+gitPullHead(){
+    local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
+    showAndRun "git checkout $HEADBRANCH"
+    showAndRun "git pull origin $HEADBRANCH"
+}
+
+# Try merging HEAD into current branch
+gitMergeHead(){
     if [[ $(git diff --stat) != '' ]]; then
         printf "\n"
         printf "!! Dirty git state detected. Please commit or stash changes before proceeding.\n"
@@ -113,9 +120,12 @@ git(){
     # Set the upstream branch with "git up"
     elif [[ $@ == "up" ]]; then
         gitup
+    # Check out and pull HEAD branch
+    elif [[ $@ == "pullm" ]]; then
+        gitPullHead
     # Perform automatic merge with HEAD branch
     elif [[ $@ == "mergem" ]]; then
-        gitMergeMaster
+        gitMergeHead
     else
         command git "$@"
         if [[ $1 == "checkout" ]]; then
@@ -135,3 +145,9 @@ git(){
         fi
     fi
 }
+
+alias glo='git log --oneline -n 10'
+alias gpm='gitPullHead'
+alias gph='gitPullHead'
+alias gmm='gitMergeHead'
+alias gmh='gitMergeHead'
