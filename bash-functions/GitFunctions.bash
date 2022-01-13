@@ -63,7 +63,7 @@ gitMergeHead(){
     if [[ $(git diff --stat) != '' ]]; then
         printf "\n"
         printf "!! Dirty git state detected. Please commit or stash changes before proceeding.\n"
-        exit 1
+        return
     fi  
 
     printf "Fetching repository info...\n"
