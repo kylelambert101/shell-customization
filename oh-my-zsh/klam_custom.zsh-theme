@@ -74,7 +74,7 @@ local last_command_output="%(?.%(!.$red.$green).$yellow)"
 # - alien_monster
 # - blowfish
 # - collision_symbol
-# - extraterrestrial_alien
+# - alien
 # - raised_hand_with_fingers_splayed
 # - robot_face
 # - rocket
@@ -82,7 +82,7 @@ local last_command_output="%(?.%(!.$red.$green).$yellow)"
 # - tropical_fish
 # - white_right_pointing_backhand_index
 # Full list: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/emoji/emoji-char-definitions.zsh
-local prompt_based_on_last_command="%(?.$emoji[rocket].$emoji[extraterrestrial_alien])"
+local prompt_based_on_last_command="%(?.$emoji[rocket].$emoji[alien])"
 # local prompt_based_on_last_command="%(?.$emoji[tropical_fish].$emoji[blowfish])"
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
