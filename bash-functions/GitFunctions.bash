@@ -4,8 +4,12 @@
 gitup() {
     # Assume we're using the standard "origin" name for remote
     local REMOTE="origin"
+    printf "Determining branch... "
     local BRANCH=$(git branch --show-current)
+    printf "'%s'\n" $BRANCH
+    printf "Determining HEAD branch... "
     local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
+    printf "'%s'\n" $HEADBRANCH
     if [[ $BRANCH == "" ]]
     then
         echo "No branch found. Aborting."
@@ -23,7 +27,9 @@ gitup() {
 
 # Show the ten most recently checked out git branches for the current repo
 showRecentGitBranches(){
+    printf "Determining repo... "
     local THIS_REPO=$(git config --get remote.origin.url)
+    printf "'%s'" $THIS_REPO
     if [[ $THIS_REPO == "" ]]
     then
         echo "No git repo found. Aborting."
@@ -53,7 +59,9 @@ showRecentGitBranches(){
 
 # Check out and pull HEAD branch
 gitPullHead(){
+    printf "Determining HEAD branch... "
     local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
+    printf "'%s'\n" $HEADBRANCH
     showAndRun "git checkout $HEADBRANCH"
     showAndRun "git pull origin $HEADBRANCH"
 }
@@ -73,11 +81,12 @@ gitMergeHead(){
         return
     fi
 
-    local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
+    printf "Determining branch... "
     local BRANCH=$(git branch --show-current)
-    printf "\n"
-    printf "HEAD branch:    $HEADBRANCH\n"
-    printf "Current branch: $BRANCH\n"
+    printf "'%s'\n" $BRANCH
+    printf "Determining HEAD branch... "
+    local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
+    printf "'%s'\n" $HEADBRANCH
     printf "\n"
 
     if [[ $HEADBRANCH == "" ]]
