@@ -29,7 +29,7 @@ gitup() {
 showRecentGitBranches(){
     printf "Determining repo... "
     local THIS_REPO=$(git config --get remote.origin.url)
-    printf "'%s'" $THIS_REPO
+    printf "'%s'\n" $THIS_REPO
     if [[ $THIS_REPO == "" ]]
     then
         echo "No git repo found. Aborting."
