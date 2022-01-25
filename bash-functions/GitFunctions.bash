@@ -62,8 +62,8 @@ gitPullHead(){
     printf "Determining HEAD branch... "
     local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
     printf "'%s'\n" $HEADBRANCH
-    showAndRun "git checkout $HEADBRANCH"
-    showAndRun "git pull origin $HEADBRANCH"
+    showAndRun git checkout $HEADBRANCH
+    showAndRun git pull origin $HEADBRANCH
 }
 
 # Try merging HEAD into current branch
@@ -105,12 +105,12 @@ gitMergeHead(){
         return
     fi
     
-    showAndRun "git checkout $HEADBRANCH"
-    showAndRun "git pull origin $HEADBRANCH"
-    showAndRun "git checkout $BRANCH"
+    showAndRun git checkout $HEADBRANCH
+    showAndRun git pull origin $HEADBRANCH
+    showAndRun git checkout $BRANCH
 
     printf "\n"
-    if ! showAndRun "git merge $HEADBRANCH"
+    if ! showAndRun git merge $HEADBRANCH
     then
         printf "Automatic merge failed; Opening VSCode to fix conflicts..."
         code .
