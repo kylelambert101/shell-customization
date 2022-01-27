@@ -6,7 +6,7 @@ kubelogs(){
     if [[ $POD_PATTERN == "" ]]
     then
         echo "Please specify a pod name search pattern."
-        exit
+        return
     fi
     echo "Getting Pods..."
     echo "==============="
@@ -15,13 +15,13 @@ kubelogs(){
     if [[ $PODS == "" ]]
     then
         echo "No matching pods found for '$POD_PATTERN'."
-        exit
+        return
     fi
     local MATCH_COUNT=$(wc -l <<< "$PODS")
     if [[ $MATCH_COUNT -gt 1 ]]
     then
         echo "Too many matching pods found: $MATCH_COUNT"
-        exit
+        return
     fi
     local POD_NAME=$(cut -d " " -f1 <<< "$PODS")
     local HEADER="Logs for $POD_NAME as of $(date):"
