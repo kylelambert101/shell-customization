@@ -21,6 +21,7 @@ kubelogs(){
     if [[ $MATCH_COUNT -gt 1 ]]
     then
         echo "Too many matching pods found: $MATCH_COUNT"
+        echo "$PODS"
         return
     fi
     local POD_NAME=$(cut -d " " -f1 <<< "$PODS")
