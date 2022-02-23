@@ -14,14 +14,18 @@ path(){
         echo "${PATH//:/$'\n'}"
     fi
 }
-
 # Kill the process that is taking up port $1
-killPort(){
-    local PORT=$1
-    netstat -ano | findstr :$PORT | awk '{print $5}' | head -n 1 | xargs -t -n1 tskill
+killPorts(){
+    if [[ ! $(command -v "kill-port") ]]; then
+        printf "kill-port is not installed. To install globally:\n\n"
+        printf "    npm i -g kill-port\n"
+        return
+    fi
+    
+    kill-port "$@"
 }
 
 
-alias kp="killPort"
-alias pk="killPort"
+alias kp="killPorts"
+alias pk="killPorts"
 alias leave="exit 0"
