@@ -14,7 +14,7 @@ path(){
         echo "${PATH//:/$'\n'}"
     fi
 }
-# Kill the process that is taking up port $1
+# Kill the process(es) running on port(s) $@
 killPorts(){
     if [[ ! $(command -v "kill-port") ]]; then
         printf "kill-port is not installed. To install globally:\n\n"
