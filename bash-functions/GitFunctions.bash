@@ -104,13 +104,8 @@ gitMergeHead(){
         printf "Already on $HEADBRANCH branch. Aborting.\n"
         return
     fi
-    
-    showAndRun git checkout $HEADBRANCH
-    showAndRun git pull origin $HEADBRANCH
-    showAndRun git checkout $BRANCH
 
-    printf "\n"
-    if ! showAndRun git merge $HEADBRANCH
+    if ! showAndRun git merge origin $HEADBRANCH
     then
         printf "Automatic merge failed; Opening VSCode to fix conflicts..."
         code .
