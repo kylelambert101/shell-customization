@@ -41,7 +41,14 @@ killPorts(){
     kill-port "$@"
 }
 
+# Navigate to specified directory and open VS Code
+cdCode(){
+    cd "$1"
+    code .
+}
+
 
 alias kp="killPorts"
 alias pk="killPorts"
 alias leave="exit 0"
+alias cdc="cdCode"
