@@ -51,4 +51,4 @@ cdCode(){
 alias kp="killPorts"
 alias pk="killPorts"
 alias leave="exit 0"
-alias cdc="cdCode"
+alias ccode="cdCode"
