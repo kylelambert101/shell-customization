@@ -104,6 +104,8 @@ gitMergeHead(){
         printf "Already on $HEADBRANCH branch. Aborting.\n"
         return
     fi
+    
+    showAndRun git pull origin $HEADBRANCH
 
     if ! showAndRun git merge origin $HEADBRANCH
     then
