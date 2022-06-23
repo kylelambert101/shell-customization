@@ -3,6 +3,7 @@
 # Show logs for a kube pod matching the first argument
 kubelogs(){
     local POD_PATTERN=$1
+    local EXTRA_ARGS=${@:2}
     if [[ $POD_PATTERN == "" ]]
     then
         echo "Please specify a pod name search pattern."
@@ -29,5 +30,5 @@ kubelogs(){
     echo $HEADER
     printf '=%.0s' $(seq 1 $(wc -c <<< "$HEADER"))
     echo ""
-    kubectl logs $POD_NAME
+    kubectl logs $POD_NAME $EXTRA_ARGS
 }
