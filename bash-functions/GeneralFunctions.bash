@@ -8,10 +8,11 @@ showAndRun(){
 
 # list PATH on separate lines, optionally sorted with "-s" flag
 path(){
+    local NEWLINE=$'\n'
     if [[ "$1" == "-s" ]]; then
-        echo "${PATH//:/$'\n'}" | sort
+        echo "${PATH//:/$NEWLINE}" | sort
     else
-        echo "${PATH//:/$'\n'}"
+        echo "${PATH//:/$NEWLINE}"
     fi
 }
 
