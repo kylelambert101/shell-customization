@@ -36,7 +36,7 @@ kubelogs(){
     echo "============================================================"
     echo "Note: Use the \"-c\" flag to show a different container's logs"
     echo ""
-    local CONTAINER_LIST=$(kubectl get pods authorizationapi-7f5b7f6fd8-pb8rc -o jsonpath='{.spec.containers[*].name}')
+    local CONTAINER_LIST=$(kubectl get pods ${POD_NAME} -o jsonpath='{.spec.containers[*].name}')
     echo "Available containers for $POD_NAME:"
     printf " - %s\n" $CONTAINER_LIST
 }
