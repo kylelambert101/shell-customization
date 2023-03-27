@@ -118,6 +118,34 @@ gitMergeHead(){
     printf "Make sure to run \`git push\` if the local changes are satisfactory. " 
 }
 
+# Show a list of local branches configured with a remote branch that no longer exists
+gitListLocal(){
+    local BRANCHES
+    
+    BRANCHES=$(git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}')
+
+    if [[ $BRANCHES == "" ]]; then
+        echo "No untracked branches"
+        return
+    fi
+
+    echo "$BRANCHES"
+}
+
+# Show a list of local branches that were never pushed to origin
+gitListUntracked(){
+    local BRANCHES
+    
+    BRANCHES=$(git branch --format "%(refname:short) %(upstream)" | awk '{if (!$2) print $1;}')
+
+    if [[ $BRANCHES == "" ]]; then
+        echo "No untracked branches"
+        return
+    fi
+
+    echo "$BRANCHES"
+}
+
 # override git command with custom functionality
 git(){
     # show recent branches with "git rb"
@@ -157,3 +185,5 @@ alias gpm='gitPullHead'
 alias gph='gitPullHead'
 alias gmm='gitMergeHead'
 alias gmh='gitMergeHead'
+alias gll='gitListLocal'
+alias glu='gitListUntracked'
