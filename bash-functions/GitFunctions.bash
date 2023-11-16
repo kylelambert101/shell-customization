@@ -146,6 +146,19 @@ gitListUntracked(){
     echo "$BRANCHES"
 }
 
+gitListReleases(){
+    local RELEASES
+    
+    RELEASES=$(git fetch && git branch -a | grep -oP "remotes/origin/release/\K\d+\.\d+\.\d+" | sort -t. -k1,1n -k2,2n -k3,3n | sed 's/^/release\//')
+
+    if [[ $RELEASES == "" ]]; then 
+        echo "No release branches"
+        return
+    fi
+
+    echo "$RELEASES"
+}
+
 # override git command with custom functionality
 git(){
     # show recent branches with "git rb"
@@ -160,6 +173,8 @@ git(){
     # Perform automatic merge with HEAD branch
     elif [[ $@ == "mergem" ]]; then
         gitMergeHead
+    elif [[ $@ == "releases" ]]; then
+        gitListReleases
     else
         command git "$@"
         if [[ $1 == "checkout" ]]; then
