@@ -192,7 +192,7 @@ git(){
     fi
 }
 
-alias glo='git log --oneline -n 10'
+alias glo='git --no-pager log --oneline -n 10'
 alias gpm='gitPullHead'
 alias gph='gitPullHead'
 alias gmm='gitMergeHead'
