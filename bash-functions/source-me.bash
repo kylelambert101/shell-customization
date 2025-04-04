@@ -9,7 +9,7 @@ if [[ $OSTYPE == 'msys'* ]]; then
     if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 else
     # MacOS/Linux
-    DIR=$(dirname $0)
+    DIR=$(dirname "$0")
 fi
 
 if [[ $DIR != "" ]]; then

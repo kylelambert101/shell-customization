@@ -6,23 +6,20 @@ gitup() {
     local REMOTE="origin"
     printf "Determining branch... "
     local BRANCH=$(git branch --show-current)
-    printf "'%s'\n" $BRANCH
+    printf "'%s'\n" "$BRANCH"
     printf "Determining HEAD branch... "
     local HEADBRANCH=$(git remote show origin | grep "HEAD branch" | awk '{print $3}')
-    printf "'%s'\n" $HEADBRANCH
-    if [[ $BRANCH == "" ]]
-    then
+    printf "'%s'\n" "$HEADBRANCH"
+    if [[ -z "$BRANCH" ]]; then
         echo "No branch found. Aborting."
         return
     fi
-    if [[ $BRANCH == $HEADBRANCH ]]
-    then
+    if [[ "$BRANCH" == "$HEADBRANCH" ]]; then
         echo "On branch $HEADBRANCH. Aborting."
         return
     fi
-    local CMD="git push --set-upstream $REMOTE $BRANCH"
-    echo "Running \`$CMD\`"
-    $CMD
+    echo "Running \`git push --set-upstream $REMOTE $BRANCH\`"
+    git push --set-upstream "$REMOTE" "$BRANCH"
 }
 
 # Show the ten most recently checked out git branches for the current repo
