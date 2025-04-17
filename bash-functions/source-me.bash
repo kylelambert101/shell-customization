@@ -13,8 +13,9 @@ else
 fi
 
 if [[ $DIR != "" ]]; then
+    source "$DIR/DockerFunctions.bash"
+    source "$DIR/DotnetFunctions.bash"
     source "$DIR/GeneralFunctions.bash"
     source "$DIR/GitFunctions.bash"
-    source "$DIR/DotnetFunctions.bash"
     source "$DIR/KubeFunctions.bash"
 fi
