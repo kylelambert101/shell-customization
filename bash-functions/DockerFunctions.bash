@@ -135,7 +135,7 @@ docker-logs() {
 
   # Find matching containers
   local matching_containers
-  matching_containers=$(docker ps -a --format "{{.ID}} {{.Names}}" | grep "$container_name_part" || true)
+  matching_containers=$(docker ps -a --format "{{.ID}} {{.Names}} {{.Image}}" | grep "$container_name_part" || true)
 
   # Check if there are no matches
   if [[ -z "$matching_containers" ]]; then
