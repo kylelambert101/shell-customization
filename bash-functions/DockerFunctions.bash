@@ -60,6 +60,16 @@ process-logs() {
       message=$(echo "$line" | jq -r '.message // empty')
     fi
 
+    # If the log level is unknown, check for specific keywords
+    if [[ "$log_level" == "UNKNOWN" ]]; then
+      local lower_line=$(echo "$line" | tr '[:upper:]' '[:lower:]')
+      if echo "$lower_line" | grep -E -q '\berror\b'; then
+        log_level="ERROR"
+      elif echo "$lower_line" | grep -E -q '\bwarn(ing)?\b'; then
+        log_level="WARN"
+      fi
+    fi
+
     # Determine log level color
     local log_level_color=$RESET
     local message_color=$RESET
