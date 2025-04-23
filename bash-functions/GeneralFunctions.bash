@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Print a command to the console before running it
 showAndRun(){
     printf ">> %s\n" "$*"

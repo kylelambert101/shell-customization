@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Show logs for a kube pod matching the first argument
 kubelogs(){
     local POD_PATTERN=$1

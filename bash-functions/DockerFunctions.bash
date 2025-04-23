@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Define colors
 BLUE="\033[34m"
 CYAN="\033[36m"

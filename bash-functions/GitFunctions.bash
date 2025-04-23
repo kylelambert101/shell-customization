@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Automatically set the upstream branch for the current local branch
 gitup() {
     # Assume we're using the standard "origin" name for remote

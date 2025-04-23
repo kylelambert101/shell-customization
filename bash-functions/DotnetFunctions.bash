@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # override dotnet command with custom functionality
 dotnet(){
     # Clear the nuget cache
