@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Load this file from ~/.bashrc by adding the following line
 # source <path-to-custom-functions-repo>/source-me.bash
 
@@ -18,4 +16,5 @@ if [[ $DIR != "" ]]; then
     source "$DIR/GeneralFunctions.bash"
     source "$DIR/GitFunctions.bash"
     source "$DIR/KubeFunctions.bash"
+    source "$DIR/AWSFunctions.bash"
 fi
