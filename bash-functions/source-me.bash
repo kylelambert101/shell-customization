@@ -11,10 +11,10 @@ else
 fi
 
 if [[ $DIR != "" ]]; then
-    source "$DIR/DockerFunctions.bash"
-    source "$DIR/DotnetFunctions.bash"
-    source "$DIR/GeneralFunctions.bash"
-    source "$DIR/GitFunctions.bash"
-    source "$DIR/KubeFunctions.bash"
-    source "$DIR/AWSFunctions.bash"
+    source "$DIR/aws-functions.bash"
+    source "$DIR/docker-functions.bash"
+    source "$DIR/dotnet-functions.bash"
+    source "$DIR/general-functions.bash"
+    source "$DIR/git-functions.bash"
+    source "$DIR/kube-functions.bash"
 fi
