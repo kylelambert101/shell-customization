@@ -33,7 +33,6 @@ aws-login() {
 
   # Log in to ECR
   echo -e "${NC}Logging in to ECR at ${BLUE}$ECR_HOST_URL...${NC}"
-  printf "${DARKGREY}"
   aws ecr get-login-password | docker login --username "$ECR_USERNAME" --password-stdin "$ECR_HOST_URL"
   if [[ $? -eq 0 ]]; then
     echo -e "👍 ${GREEN}Done ${NC}"
