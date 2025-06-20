@@ -11,10 +11,6 @@ else
 fi
 
 if [[ $DIR != "" ]]; then
-    source "$DIR/aws-functions.bash"
-    source "$DIR/docker-functions.bash"
-    source "$DIR/dotnet-functions.bash"
     source "$DIR/general-functions.bash"
     source "$DIR/git-functions.bash"
-    source "$DIR/kube-functions.bash"
 fi
